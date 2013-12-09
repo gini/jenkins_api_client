@@ -707,6 +707,18 @@ module JenkinsApi
       end
       alias_method :build_number, :get_current_build_number
 
+
+      # Obtain the test coverage from the jacoco plugin
+      #
+      # @param [String] job_name
+      # @param [String] build_number
+      # @return [String] test coverage
+      #
+      def get_jacoco_coverage(job_name, build_number)
+        @logger.info "Obtaining the current test coverage of '#{job_name}'"
+        @client.api_get_request("/job/#{path_encode job_name}/#{path_encode build_number}/jacoco")
+      end
+
       # Build a Jenkins job, optionally waiting for build to start and
       # returning the build number.
       # Adds support for new/old Jenkins servers where build_queue id may
