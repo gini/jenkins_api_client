@@ -714,9 +714,9 @@ module JenkinsApi
       # @param [String] build_number
       # @return [String] test coverage
       #
-      def get_jacoco_coverage(job_name, build_number)
+      def get_jacoco_coverage(job_name, build_num)
         @logger.info "Obtaining the current test coverage of '#{job_name}'"
-        @client.api_get_request("/job/#{path_encode job_name}/#{path_encode build_number}/jacoco")
+        @client.api_get_request("/job/#{path_encode job_name}/#{build_num}/jacoco")
       end
 
       # Build a Jenkins job, optionally waiting for build to start and
